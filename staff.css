@@ -1,0 +1,18 @@
+.fab { font-size: 1.35em !important; margin-left: -2.5px; }
+body {
+	 background: linear-gradient(134deg, rgba(255, 0, 133, 0.5), rgba(0, 172, 255, 0.5));
+	background-size: auto auto;
+}
+html {
+	background: url('https://static.pexels.com/photos/137103/pexels-photo-137103.jpeg');
+	background-size: cover;
+}
+
+.tc { background-color: rgba(0, 0, 0, 0.1); }
+
+.wh { color: white !important; }
+.is-active { background-color: rgba(0, 0, 0, 0.5); }
+.navbar-item:hover { color: black !important; }
+.box {
+	background: rgba(255, 255, 255, 0.5);
+}
