@@ -66,7 +66,7 @@ async function downloadShareX() {
         },
         URL: "$json:url$",
     }
-    const blob = new Blob([sharexTemplate], {type: "application/sxcu"});
+    const blob = new Blob([JSON.stringify(sharexTemplate, undefined, 4)], {type: "application/sxcu"});
     window.location.replace(URL.createObjectURL(blob));
 }
 // Creates the ShareX template.
