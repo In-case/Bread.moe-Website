@@ -48,7 +48,7 @@ async function handleDomainKey() {
 }
 // Handles getting the domain and key.
 
-async function downloadShareXAsync() {
+$("#downloadShareX").click(async() => {
     const result = await handleDomainKey();
     if (result === undefined) {
         return;
@@ -75,17 +75,10 @@ async function downloadShareXAsync() {
     if (!await $("#badThingsHappened").hasClass("is-hidden")) {
         await $("#badThingsHappened").addClass("is-hidden");
     }
-}
+});
 // Creates the ShareX template.
 
-function downloadShareX() {
-    (async() => {
-        await downloadShareXAsync();
-    })();
-}
-// The non-async wrapper for ShareX.
-
-async function downloadKShareAsync() {
+$("#downloadKShare").click(async() => {
     const result = await handleDomainKey();
     if (result === undefined) {
         return;
@@ -121,12 +114,5 @@ async function downloadKShareAsync() {
     if (!await $("#badThingsHappened").hasClass("is-hidden")) {
         await $("#badThingsHappened").addClass("is-hidden");
     }
-}
+});
 // Creates the KShare template.
-
-function downloadKShare() {
-    (async() => {
-        await downloadKShareAsync();
-    })();
-}
-// The non-async wrapper for ShareX.
