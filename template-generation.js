@@ -105,7 +105,7 @@ async function downloadKShare() {
         ],
         return: ".url"
     };
-    const blob = new Blob([JSON.stringify(sharexTemplate, undefined, 4)], {type: "application/uploader"});
+    const blob = new Blob([JSON.stringify(kshareTemplate, undefined, 4)], {type: "application/uploader"});
     const anchor = document.createElement("a");
     anchor.download = "template.uploader";
     anchor.href = URL.createObjectURL(blob);
