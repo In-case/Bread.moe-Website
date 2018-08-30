@@ -41,7 +41,7 @@ async function handleDomainKey() {
             if (!/^[a-z0-9-]{1,63}\.(bread\.moe|ate-a-ta\.co|blobs\.party|died-at-a\.party|died-while\.racing|hacked-my\.stream|hacked-my\.webcam|had-a\.party|is-a-ta\.co|pinged-b1nzy-for\.fun|stop-pings\.me|tits-are\.life|uses-ifunny\.co|wears-supre\.me|went-to-the-gucci\.store|worstme\.me|tried-to-do\.science)$/.test(domain)) {
                 await showError("The domain given is invalid.")
             } else {
-                return key, domain;
+                return [key, domain];
             }
         }
     }
@@ -53,6 +53,7 @@ async function downloadShareX() {
     if (result === undefined) {
         return;
     }
-    const key, domain = result;
+    const key = result[0];
+    const domain = result[1];
 }
 // Creates the ShareX template.
