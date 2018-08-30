@@ -53,7 +53,20 @@ async function downloadShareX() {
     if (result === undefined) {
         return;
     }
-    const key = result[0];
-    const domain = result[1];
+    const sharexTemplate = {
+        Name: "Bread.moe Uploader",
+        DestinationType: "ImageUploader",
+        RequestURL: "https://api-allowed.bread.moe/api/v1/upload",
+        FileFormName: "file",
+        Arguments: {
+            domain: result[1],
+        },
+        Headers: {
+            Authorization: `Bearer ${result[0]}`,
+        },
+        URL: "$json:url$",
+    }
+    const blob = new Blob([sharexTemplate], {type: "application/sxcu"});
+    window.location.replace(URL.createObjectURL(blob));
 }
 // Creates the ShareX template.
