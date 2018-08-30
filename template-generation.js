@@ -77,7 +77,11 @@ $(document).ready(async () => {
             return: ".url"
         };
         const blob = new Blob([JSON.stringify(kshareTemplate, undefined, 4)], {type: "application/uploader"});
-        window.location.replace(`document/uploader:template.uploader:${URL.createObjectURL(blob)}`)
+        const anchor = document.createElement("a");
+        anchor.download = "template.uploader";
+        anchor.href = URL.createObjectURL(blob);
+        anchor.dataset.downloadurl = `document/uploader:${anchor.download}:${anchor.href}`;
+        anchor.click();
         if (!await $("#badThingsHappened").hasClass("is-hidden")) {
             await $("#badThingsHappened").addClass("is-hidden");
         }
