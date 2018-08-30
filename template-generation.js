@@ -14,7 +14,7 @@ function getURLValue(key) {
 }
 // Gets the value from the URL
 
-$(window).load(async () => {
+$(document).ready(async () => {
     const keyFromURL = getURLValue("key");
     if (keyFromURL) { await $("#keyField").val(keyFromURL); }
     // Gets the key from the URL.
