@@ -22,7 +22,7 @@ $(document).ready(async () => {
 // Handles the window loading.
 
 async function showError(error) {
-    await $("#badThingsHappened").val(error);
+    await $("#badThingsHappened").text(error);
     if (await $("#badThingsHappened").hasClass("is-hidden")) {
         await $("#badThingsHappened").removeClass("is-hidden");
     }
