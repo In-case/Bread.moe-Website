@@ -77,7 +77,6 @@ $(document).ready(async () => {
             return: ".url"
         };
         const blob = new Blob([JSON.stringify(kshareTemplate, undefined, 4)], {type: "application/uploader"});
-        const anchor = document.createElement("a");
         window.location.replace(`document/uploader:template.uploader:${URL.createObjectURL(blob)}`)
         if (!await $("#badThingsHappened").hasClass("is-hidden")) {
             await $("#badThingsHappened").addClass("is-hidden");
