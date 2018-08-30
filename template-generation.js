@@ -18,6 +18,75 @@ $(document).ready(async () => {
     const keyFromURL = getURLValue("key");
     if (keyFromURL) { await $("#keyField").val(keyFromURL); }
     // Gets the key from the URL.
+
+    $("#downloadShareX").click(async() => {
+        const result = await handleDomainKey();
+        if (result === undefined) {
+            return;
+        }
+        const sharexTemplate = {
+            Name: "Bread.moe Uploader",
+            DestinationType: "ImageUploader",
+            RequestURL: "https://api-allowed.bread.moe/api/v1/upload",
+            FileFormName: "file",
+            Arguments: {
+                domain: result[1],
+            },
+            Headers: {
+                Authorization: `Bearer ${result[0]}`,
+            },
+            URL: "$json:url$",
+        }
+        const blob = new Blob([JSON.stringify(sharexTemplate, undefined, 4)], {type: "application/sxcu"});
+        const anchor = document.createElement("a");
+        anchor.download = "template.sxcu";
+        anchor.href = URL.createObjectURL(blob);
+        anchor.dataset.downloadurl = `document/sxcu:${anchor.download}:${anchor.href}`;
+        anchor.click();
+        if (!await $("#badThingsHappened").hasClass("is-hidden")) {
+            await $("#badThingsHappened").addClass("is-hidden");
+        }
+    });
+    // Creates the ShareX template.
+
+    $("#downloadKShare").click(async() => {
+        const result = await handleDomainKey();
+        if (result === undefined) {
+            return;
+        }
+        const kshareTemplate = {
+            name: "bread.moe",
+            desc: "Bread.moe Uploader",
+            target: "https://api-allowed.bread.moe/api/v1/upload",
+            format: "multipart-form-data",
+            headers: {
+                Authorization: `Bearer ${result[0]}`
+            },
+            body: [
+                {
+                    name: "domain",
+                    body: result[1]
+                },
+                {
+                    "_Content-Type": "/%contenttype/",
+                    filename: "/image.%format/",
+                    name: "file",
+                    body: "/%imagedata/"
+                }
+            ],
+            return: ".url"
+        };
+        const blob = new Blob([JSON.stringify(kshareTemplate, undefined, 4)], {type: "application/uploader"});
+        const anchor = document.createElement("a");
+        anchor.download = "template.uploader";
+        anchor.href = URL.createObjectURL(blob);
+        anchor.dataset.downloadurl = `document/uploader:${anchor.download}:${anchor.href}`;
+        anchor.click();
+        if (!await $("#badThingsHappened").hasClass("is-hidden")) {
+            await $("#badThingsHappened").addClass("is-hidden");
+        }
+    });
+    // Creates the KShare template.
 });
 // Handles the window loading.
 
@@ -47,72 +116,3 @@ async function handleDomainKey() {
     }
 }
 // Handles getting the domain and key.
-
-$("#downloadShareX").click(async() => {
-    const result = await handleDomainKey();
-    if (result === undefined) {
-        return;
-    }
-    const sharexTemplate = {
-        Name: "Bread.moe Uploader",
-        DestinationType: "ImageUploader",
-        RequestURL: "https://api-allowed.bread.moe/api/v1/upload",
-        FileFormName: "file",
-        Arguments: {
-            domain: result[1],
-        },
-        Headers: {
-            Authorization: `Bearer ${result[0]}`,
-        },
-        URL: "$json:url$",
-    }
-    const blob = new Blob([JSON.stringify(sharexTemplate, undefined, 4)], {type: "application/sxcu"});
-    const anchor = document.createElement("a");
-    anchor.download = "template.sxcu";
-    anchor.href = URL.createObjectURL(blob);
-    anchor.dataset.downloadurl = `document/sxcu:${anchor.download}:${anchor.href}`;
-    anchor.click();
-    if (!await $("#badThingsHappened").hasClass("is-hidden")) {
-        await $("#badThingsHappened").addClass("is-hidden");
-    }
-});
-// Creates the ShareX template.
-
-$("#downloadKShare").click(async() => {
-    const result = await handleDomainKey();
-    if (result === undefined) {
-        return;
-    }
-    const kshareTemplate = {
-        name: "bread.moe",
-        desc: "Bread.moe Uploader",
-        target: "https://api-allowed.bread.moe/api/v1/upload",
-        format: "multipart-form-data",
-        headers: {
-            Authorization: `Bearer ${result[0]}`
-        },
-        body: [
-            {
-                name: "domain",
-                body: result[1]
-            },
-            {
-                "_Content-Type": "/%contenttype/",
-                filename: "/image.%format/",
-                name: "file",
-                body: "/%imagedata/"
-            }
-        ],
-        return: ".url"
-    };
-    const blob = new Blob([JSON.stringify(kshareTemplate, undefined, 4)], {type: "application/uploader"});
-    const anchor = document.createElement("a");
-    anchor.download = "template.uploader";
-    anchor.href = URL.createObjectURL(blob);
-    anchor.dataset.downloadurl = `document/uploader:${anchor.download}:${anchor.href}`;
-    anchor.click();
-    if (!await $("#badThingsHappened").hasClass("is-hidden")) {
-        await $("#badThingsHappened").addClass("is-hidden");
-    }
-});
-// Creates the KShare template.
