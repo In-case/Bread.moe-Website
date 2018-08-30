@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<!-- Jake did a thing too for updating! -->
+<!-- Jake did a thing -->
 <!-- Anidox did a thing -->
-<!-- Credit to Joshek, he did the original Bread.moe site -->
+<!-- Credit to Joshek for creating the original Bread.moe site -->
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
-	<title>Bread.moe</title>
+	<link rel="stylesheet" href="https://cdn.rawgit.com/mrcoles/markdown-css/master/markdown.css">
+	<title>Bread.moe - Getting Started</title>
 	<meta charset="utf-8">
 	<meta property="og:title" content="bread.moe">
 	<meta property="og:description" content="Bread.moe is the only image host you'll ever need with so many great domains to choose from!">
 	<meta property="og:type" content="web.page">
 	<meta property="og:image" content="https://pngimg.com/uploads/bread/bread_PNG2230.png">
 	<meta property="og:url" content="https://bread.moe">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="template-generation.js"></script>
 </head>
 <body>
 	<section class="hero is-fullheight">
@@ -32,10 +35,10 @@
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active wh" href="https://bread.moe">
+            <a class="navbar-item wh" href="https://bread.moe">
               Home
             </a>
-            <a class="navbar-item wh" href="getting-started.html">
+            <a class="navbar-item" href="getting-started.html">
               Getting Started
             </a>
             <a class="navbar-item wh" href="staff.html">
@@ -44,7 +47,7 @@
             <a class="navbar-item wh" href="https://status.bread.moe/">
               Status
             </a>
-            <a class="navbar-item wh" href="templategenerator.html">
+            <a class="navbar-item is-active wh" href="templategenerator.html">
               Template Generator
             </a>
             <a class="navbar-item wh" href="https://discord.gg/JBFzpkC">
@@ -54,17 +57,17 @@
         </div>
       </div>
     </nav>
-  </div>
-
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title wh">
-        Bread.moe
-      </p>
-      <p class="subtitle wh">
-		Image hosting
-      </p>
+	<section class="section">
+    <div class="container">
+        <label class="label">Key:</label>
+        <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="Key">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+        </div>
     </div>
-  </div>
-</section>
+	</section>
 </body>
