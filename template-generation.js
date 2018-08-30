@@ -48,7 +48,7 @@ async function handleDomainKey() {
 }
 // Handles getting the domain and key.
 
-async function downloadShareX() {
+async function downloadShareXAsync() {
     const result = await handleDomainKey();
     if (result === undefined) {
         return;
@@ -78,7 +78,14 @@ async function downloadShareX() {
 }
 // Creates the ShareX template.
 
-async function downloadKShare() {
+function downloadShareX() {
+    (async() => {
+        await downloadShareXAsync();
+    })();
+}
+// The non-async wrapper for ShareX.
+
+async function downloadKShareAsync() {
     const result = await handleDomainKey();
     if (result === undefined) {
         return;
@@ -116,3 +123,10 @@ async function downloadKShare() {
     }
 }
 // Creates the KShare template.
+
+function downloadKShare() {
+    (async() => {
+        await downloadKShareAsync();
+    })();
+}
+// The non-async wrapper for ShareX.
